@@ -5,7 +5,7 @@
 **Name:** Rewind for X
 
 **Summary (max 132 chars):**
-Lost your place when the X feed refreshed? Bring back the posts you were reading, right in your timeline.
+Ever lose the post you were reading when X refreshes your feed? Click once to bring it back.
 
 **Category:** Social & Communication
 
@@ -13,21 +13,24 @@ Lost your place when the X feed refreshed? Bring back the posts you were reading
 
 **Description:**
 
-You're halfway through a post on X, the feed refreshes, and it's gone. Rewind for X brings it back.
+Ever get frustrated when X refreshes your feed and the post you were reading just disappears?
 
-When X refreshes your timeline on its own, or you tap Home while you're already on the Home feed, a small banner appears above the new feed:
+I built Rewind for X to fix that.
 
+When your feed refreshes, a small banner shows up at the top of your timeline:
 "Wait, I didn't finish reading those posts. Bring them back!"
 
-Click it and the posts you were reading reappear right there in your timeline, looking just like regular posts, with their images and engagement counts. Click again to hide them.
+Click it, and the posts you were reading come right back, inline in your timeline, looking just like regular posts with their images and counts. Done reading? Click "All caught up? Hide them" and they're gone.
 
-• Works on For you, Following, lists, and profiles
+What it does
+• Brings back up to 5 posts from before the refresh
+• Works when X refreshes on its own, or when you tap Home while you're already on the Home feed
 • Skips ads
 • Matches X's Default, Dim, and Lights out themes
-• Stays out of the way when you refresh on purpose (switching tabs, "Show new posts")
-• No account, no settings, nothing to configure
+• Stays quiet when you refresh on purpose, like switching tabs or tapping "Show new posts"
 
-Privacy: everything happens inside the page. Rewind for X needs no special permissions, stores nothing, and never sends data anywhere.
+Private by design
+Everything happens inside the page. No account, no settings, no data collected, nothing sent anywhere.
 
 Rewind for X is an independent project and is not affiliated with or endorsed by X Corp.
 
