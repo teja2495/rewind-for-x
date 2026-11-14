@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "Rewind for X",
+    "version": "1.0.0",
+    "description": "Lost your place when the X feed refreshed? Bring back the posts you were reading, right in your timeline.",
+    "icons": {
+        "16": "icons/icon16.png",
+        "32": "icons/icon32.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://x.com/*",
+                "https://twitter.com/*",
+                "https://www.twitter.com/*"
+            ],
+            "js": [
+                "content-script.js"
+            ],
+            "run_at": "document_start"
+        }
+    ]
+}
