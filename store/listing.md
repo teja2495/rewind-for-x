@@ -20,7 +20,7 @@ I built Rewind for X to fix that.
 When your feed refreshes, a small banner shows up at the top of your timeline:
 "Wait, I didn't finish reading those posts. Bring them back!"
 
-Click it, and the posts you were reading come right back, inline in your timeline, looking just like regular posts with their images and counts. Done reading? Click "All caught up? Hide them" and they're gone.
+Click it, and the posts you were reading come right back, inline in your timeline, looking just like regular posts with their images and counts. That's it: the banner gets out of your way.
 
 What it does
 • Brings back up to 5 posts from before the refresh
@@ -36,7 +36,7 @@ Rewind for X is an independent project and is not affiliated with or endorsed by
 
 **Graphic assets:**
 - Store icon: `icons/icon128.png`
-- Screenshots (1280×800 or 640×400, at least 1): take on x.com — banner collapsed, then posts expanded. Not included yet.
+- Screenshots (1280×800 or 640×400, at least 1): `store/screenshots/1-banner.png`, `store/screenshots/2-restored.png`
 - Small promo tile (440×280): `store/promo-small-440x280.png`
 - Marquee promo tile (1400×560, optional): `store/promo-marquee-1400x560.png`
 

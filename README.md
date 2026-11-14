@@ -8,7 +8,7 @@ When X refreshes your timeline on its own, or you click **Home** while already o
 
 > **Wait, I didn't finish reading those posts. Bring them back!**
 
-Click it and the previous feed's first five posts (ads skipped) reappear inline, above your current feed, looking like regular posts with their images. Click it again (**All caught up? Hide them**) to collapse them, or ✕ / Escape to dismiss.
+Click it and the previous feed's first five posts (ads skipped) reappear inline, above your current feed, looking like regular posts with their images. Once they're back, the banner goes away. ✕ or Escape dismisses the banner without restoring anything.
 
 Not affiliated with or endorsed by X Corp.
 

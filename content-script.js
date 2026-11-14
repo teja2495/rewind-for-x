@@ -8,6 +8,7 @@
     let recovery = null;
     let host = null;
     let expanded = false;
+    let settleUntil = 0;
     let bannerPostId = null;
     let feedSnapshot = [];
     let timer = null;
@@ -136,15 +137,16 @@
         }
     }
 
-    function toggleExpanded() {
-        if (!recovery?.length) return;
-        expanded = !expanded;
+    function restorePosts() {
+        if (!recovery?.length || expanded) return;
+        expanded = true;
         // The inserted posts push the feed down; that is not another refresh.
         anchor = null;
         ignoreUntil = performance.now() + 1000;
-        const button = host.querySelector('.rewind-for-x-banner').shadowRoot.querySelector('.open');
-        button.setAttribute('aria-expanded', String(expanded));
-        button.querySelector('span').textContent = expanded ? 'All caught up? Hide them' : COLLAPSED_LABEL;
+        // Pause refresh detection only while X re-lays out the taller cell; later refreshes still count.
+        settleUntil = performance.now() + 2000;
+        // Once the posts are back the banner's job is done, so it goes away.
+        host.querySelector('.rewind-for-x-banner')?.remove();
         renderPosts();
         schedule();
     }
@@ -216,7 +218,7 @@
                 @media (prefers-reduced-motion: reduce) { .banner { animation: none; } }
             </style>
             <div class="banner" role="status" aria-live="polite">
-                <button class="open" type="button" aria-expanded="false">
+                <button class="open" type="button">
                     <svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/><path d="M12 8v4l3 2"/></svg>
                     <span></span>
                 </button>
@@ -224,7 +226,7 @@
             </div>`;
         shadow.querySelector('span').textContent = COLLAPSED_LABEL;
         shadow.querySelector('.close').addEventListener('click', dismiss);
-        shadow.querySelector('.open').addEventListener('click', toggleExpanded);
+        shadow.querySelector('.open').addEventListener('click', restorePosts);
         mountBanner(posts);
     }
 
@@ -277,7 +279,7 @@
         const tracked = anchor;
         const scrolling = touching || scrollbarDragging || performance.now() <= ignoreUntil;
         let lost = false;
-        if (tracked && !scrolling && !expanded) {
+        if (tracked && !scrolling && performance.now() > settleUntil) {
             const previous = posts.find((post) => post.id === tracked.id);
             const displaced = previous && current.id !== tracked.id &&
                 (previous.rect.bottom <= 80 || previous.rect.top >= innerHeight ||
@@ -334,9 +336,8 @@
     }, true);
     window.addEventListener('keydown', (event) => {
         if (SCROLL_KEYS.has(event.key)) onScrollIntent();
-        if (event.key === 'Escape') {
-            dismiss();
-        }
+        // Escape dismisses the banner, but never posts the user already restored.
+        if (event.key === 'Escape' && !expanded) dismiss();
     });
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', () => { anchor = null; schedule(); }, { passive: true });
